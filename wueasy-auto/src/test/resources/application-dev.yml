@@ -1,0 +1,35 @@
+# wueasy - A Java Distributed Rapid Development Platform.
+# Copyright (C) 2017-2018 wueasy.com
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+spring :
+    datasource : 
+        druid : 
+            url : jdbc:mysql://localhost:3306/easy_data?useSSL=false&useUnicode=true&characterEncoding=utf-8
+            username : easyadmin
+            password : easyadmin
+            #连接池配置
+            initial-size : 10  #初始化大小
+            min-idle : 10  #最小连接
+            max-active : 20  #最大连接
+            max-wait : 60000  #配置获取连接等待超时的时间
+            pool-prepared-statements : true  #打开PSCache，并且指定每个连接上PSCache的大小(如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。分库分表较多的数据库，建议配置为false。)
+            max-pool-prepared-statement-per-connection-size : 20
+            validation-query : SELECT 1 from dual 
+            test-on-borrow : false 
+            test-on-return : false
+            test-while-idle : true
+            min-evictable-idle-time-millis : 300000  #配置一个连接在池中最小生存的时间，单位是毫秒
+            time-between-eviction-runs-millis : 60000  #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
